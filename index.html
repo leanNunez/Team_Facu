@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitZone - Tu Entrenador Personal en tu Bolsillo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --secondary: #3b82f6;
+            --accent: #f59e0b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        /* Temas */
+        body.light {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dbeafe 100%);
+            color: #1f2937;
+        }
+
+        body.dark {
+            background: linear-gradient(135deg, #0d1527 0%, #1e1b4b 100%);
+            color: #e5e7eb;
+        }
+
+        /* Barra de progreso */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            z-index: 10000;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 10px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        body.light nav {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark nav {
+            background: rgba(15, 23, 42, 0.8);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .theme-toggle {
+            background: var(--primary);
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            color: white;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            background: var(--primary-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            padding-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .highlight {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Section General */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-bottom: 4rem;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: center;
+            opacity: 0;
+        }
+
+        body.light .feature-card {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .feature-card {
+            background: rgba(30, 41, 59, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-description {
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid transparent;
+            opacity: 0;
+        }
+
+        body.light .pricing-card {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .pricing-card {
+            background: rgba(30, 41, 59, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .plan-price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .plan-period {
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .plan-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+        }
+
+        body.light .testimonial-card {
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .testimonial-card {
+            background: rgba(30, 41, 59, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Download Section */
+        .download-section {
+            text-align: center;
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .download-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .download-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 5%;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-image {
+                height: 400px;
+            }
+
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+            }
+        }
+    </style>
+</head>
+<body class="light">
+    <!-- Barra de Progreso -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <span class="logo-icon">💪</span>
+            <span>FitZone</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#features">Características</a></li>
+            <li><a href="#pricing">Precios</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Tu <span class="highlight">Entrenador Personal</span> en tu Bolsillo</h1>
+                <p>Transforma tu cuerpo con entrenamientos personalizados, seguimiento de progreso y una comunidad motivadora. Todo desde tu smartphone.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-primary">
+                        🚀 Comenzar Gratis
+                    </a>
+                    <a href="#features" class="btn btn-secondary">
+                        📱 Ver Características
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="phone-mockup">📱</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <h2 class="section-title">Características Potentes</h2>
+        <p class="section-subtitle">Todo lo que necesitas para alcanzar tus objetivos fitness</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏋️</div>
+                <h3 class="feature-title">Entrenamientos Personalizados</h3>
+                <p class="feature-description">Rutinas adaptadas a tu nivel, objetivos y disponibilidad de tiempo.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Seguimiento de Progreso</h3>
+                <p class="feature-description">Visualiza tu evolución con gráficos detallados y estadísticas.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🍎</div>
+                <h3 class="feature-title">Plan Nutricional</h3>
+                <p class="feature-description">Recetas saludables y contador de calorías integrado.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3 class="feature-title">Comunidad Activa</h3>
+                <p class="feature-description">Conecta con otros usuarios, comparte logros y motívense mutuamente.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3 class="feature-title">Recordatorios Smart</h3>
+                <p class="feature-description">Notificaciones inteligentes para nunca saltarte un entrenamiento.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Objetivos Claros</h3>
+                <p class="feature-description">Define y alcanza tus metas con nuestro sistema de logros.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <h2 class="section-title">Planes Flexibles</h2>
+        <p class="section-subtitle">Elige el plan que mejor se adapte a ti</p>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3 class="plan-name">🆓 Gratis</h3>
+                <div class="plan-price">$0</div>
+                <p class="plan-period">/mes</p>
+                <ul class="plan-features">
+                    <li>✅ Entrenamientos básicos</li>
+                    <li>✅ Seguimiento limitado</li>
+                    <li>✅ Acceso a comunidad</li>
+                    <li>❌ Sin plan nutricional</li>
+                    <li>❌ Rutinas personalizadas</li>
+                </ul>
+                <a href="#" class="btn btn-secondary">Empezar Gratis</a>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3 class="plan-name">⭐ Pro</h3>
+                <div class="plan-price">$9.99</div>
+                <p class="plan-period">/mes</p>
+                <ul class="plan-features">
+                    <li>✅ Todo de Gratis +</li>
+                    <li>✅ Rutinas personalizadas</li>
+                    <li>✅ Plan nutricional completo</li>
+                    <li>✅ Seguimiento avanzado</li>
+                    <li>✅ Sin anuncios</li>
+                </ul>
+                <a href="#" class="btn btn-primary">Obtener Pro</a>
+            </div>
+
+            <div class="pricing-card">
+                <h3 class="plan-name">👑 Premium</h3>
+                <div class="plan-price">$19.99</div>
+                <p class="plan-period">/mes</p>
+                <ul class="plan-features">
+                    <li>✅ Todo de Pro +</li>
+                    <li>✅ Coach personal 24/7</li>
+                    <li>✅ Análisis corporal</li>
+                    <li>✅ Recetas exclusivas</li>
+                    <li>✅ Acceso anticipado</li>
+                </ul>
+                <a href="#" class="btn btn-secondary">Ir Premium</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonios">
+        <h2 class="section-title">Lo que Dicen Nuestros Usuarios</h2>
+        <p class="section-subtitle">Miles de personas ya transformaron su vida</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Perdí 15kg en 4 meses siguiendo los entrenamientos y el plan nutricional. ¡La mejor inversión que he hecho!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👨</div>
+                    <div class="author-info">
+                        <h4>Carlos Rodríguez</h4>
+                        <p>Usuario Pro</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"La comunidad es increíble. Me mantiene motivada todos los días y los entrenamientos son desafiantes pero efectivos."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👩</div>
+                    <div class="author-info">
+                        <h4>María González</h4>
+                        <p>Usuario Premium</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Como principiante, FitZone me guió paso a paso. Ahora me siento más fuerte y saludable que nunca."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">👨</div>
+                    <div class="author-info">
+                        <h4>Luis Martínez</h4>
+                        <p>Usuario Pro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download-section">
+        <h2>¿Listo para Transformarte?</h2>
+        <p>Descarga FitZone ahora y comienza tu viaje fitness hoy mismo</p>
+        <div class="download-buttons">
+            <a href="#" class="download-btn">
+                🍎 App Store
+            </a>
+            <a href="#" class="download-btn">
+                🤖 Google Play
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 FitZone - Creado por Leandro para practicar JavaScript 💪</p>
+    </footer>
+
+    <script>
+        // ============================================
+        // 1. THEME TOGGLE (Cambio de tema)
+        // ============================================
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            // Toggle entre light y dark
+            body.classList.toggle('light');
+            body.classList.toggle('dark');
+            
+            // Cambiar el emoji del botón
+            themeToggle.textContent = body.classList.contains('light') ? '🌙' : '☀️';
+        });
+
+        // ============================================
+        // 2. SCROLL PROGRESS BAR (Barra de progreso)
+        // ============================================
+        window.addEventListener('scroll', () => {
+            const progressBar = document.getElementById('progressBar');
+            
+            // Cuánto has bajado
+            const scrollTop = window.pageYOffset;
+            
+            // Total que puedes bajar
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            
+            // Convertir a porcentaje
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            
+            // Aplicar ancho a la barra
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // ============================================
+        // 3. INTERSECTION OBSERVER (Animaciones)
+        // ============================================
+        const observerOptions = {
+            threshold: 0.1, // Se activa cuando el 10% es visible
+            rootMargin: '0px 0px -50px 0px' // Margen inferior
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Cuando el elemento es visible, animarlo
+                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    
+                    // Opcional: dejar de observar después de animar
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Seleccionar TODOS los elementos que queremos animar
+        const animatedElements = document.querySelectorAll(
+            '.feature-card, .pricing-card, .testimonial-card'
+        );
+
+        // Observar cada elemento
+        animatedElements.forEach(el => {
+            // Empezar invisible
+            el.style.opacity = '0';
+            // Agregar al observer
+            observer.observe(el);
+        });
+
+        // ============================================
+        // 4. SMOOTH SCROLL (Scroll suave)
+        // ============================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ============================================
+        // RESUMEN DE LO QUE HACE CADA PARTE:
+        // ============================================
+        /*
+        1. THEME TOGGLE:
+        - Escucha clicks en el botón
+        - Alterna entre clases 'light' y 'dark'
+        - Cambia el emoji del botón
+        
+        2. SCROLL PROGRESS:
+        - Escucha el evento scroll
+        - Calcula el porcentaje de scroll
+        - Actualiza el ancho de la barra
+        
+        3. INTERSECTION OBSERVER:
+        - Observa elementos específicos
+        - Cuando entran en pantalla → los anima
+        - Usa fadeInUp para aparecer desde abajo
+        
+        4. SMOOTH SCROLL:
+        - Detecta clicks en enlaces internos (#)
+        - Hace scroll suave hasta la sección
+        - Previene el comportamiento por defecto
+        */
+    </script>
+</body>
+</html>
