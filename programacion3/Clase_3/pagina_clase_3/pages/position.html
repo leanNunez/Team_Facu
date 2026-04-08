@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- esto es un comentario -->
+    <!-- info para los navegadores y buscadores -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Practica de html y css" />
+    <meta name="keywords" content="etiquetas, atributos, csss, html" />
+    <meta name="author" content="Emilse Arias" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Primer web</title>
+  </head>
+  <body>
+    <header>
+      <!-- barra de navegacion -->
+      <nav>
+        <a href="inicio.html">Inicio</a>
+        <a href="elementos.html">Elementos</a>
+        <a href="position.html" class="active">Position</a>
+        <a href="flexbox.html">Flexbox</a>
+        <a href="contactos.html">Contactos</a>
+      </nav>
+    </header>
+    <main>
+      <!-- zona con toda la info -->
+      <section class="banner html">
+        <h1>Practica de HTML y CSS</h1>
+      </section>
+      <section class="contenedor">
+        <h2>Tipos de posicionamiento</h2>
+        <p>
+          La propiedad position de CSS especifica cómo un elemento es
+          posicionado en el documento. Las propiedades top, right, bottom, y
+          left determinan la ubicación final de los elementos posicionados.
+        </p>
+        <p>
+          Un elemento posicionado es un elemento cuyo valor computado de
+          position es relative, absolute, fixed, o sticky. (En otras palabras,
+          cualquiera excepto static).
+          <br />
+          Un elemento posicionado relativamente es un elemento cuyo valor
+          computado de position es relative. Las propiedades top y bottom
+          especifican el desplazamiento vertical desde su posición original; las
+          propiedades left y right especifican su desplazamiento horizontal.
+          <br />
+          Un elemento posicionado absolutamente es un elemento cuyo valor
+          computado de position es absolute o fixed. Las propiedades top, right,
+          bottom, y left especifican el desplazamiento desde los bordes del
+          bloque contenedor del elemento. (El bloque contenedor es el ancestro
+          relativo al cual el elemento está posicionado). Si el elemento tiene
+          márgenes, se agregarán al desplazamiento. el elemento establece un
+          nuevo contexto de formato de bloque para su contenido
+          <br />
+          Un elemento posicionado fijamente es un elemento cuyo valor de
+          position computado es sticky. Es tratado como un elemento posicionado
+          relativamente hasta que su bloque contenedor cruza un límite
+          establecido (como por ejemplo dando a top cualquier valor distinto de
+          auto), dentro de su flujo principal (o el contenedor dentro del cual
+          se mueve), desde el cual es tratado como "fijo" hasta que alcance el
+          borde opuesto de su bloque contenedor.
+        </p>
+
+        <article class="contenedorPrincipal">
+            <div class="caja" id="cajaAzul">caja 1</div>
+            <div class="caja" id="cajaAmarilla">caja 2</div>
+            <div class="caja" id="cajaRoja">caja 3</div>
+        </article>
+      </section>
+      <div class="nav-buttons">
+        <a href="../index.html" class="prev">← Anterior</a>
+        <a href="flexbox.html" class="next">Siguiente →</a>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; Todos los derechos reservados | Creado por los estudiantes Lourdes Rodríguez y Leandro Nuñez</p>
+    </footer>
+  </body>
+</html>

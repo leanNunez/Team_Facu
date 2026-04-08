@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Practica de html y css" />
+    <meta name="keywords" content="etiquetas, atributos, css, html" />
+    <meta name="author" content="Emilse Arias" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Contacto - Practica HTML y CSS</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="./pages/inicio.html">Inicio</a>
+        <a href="./pages/elementos.html">Elementos</a>
+        <a href="./pages/position.html">Position</a>
+        <a href="./pages/flexbox.html">Flexbox</a>
+        <a href="./pages/contactos.html" class="active">Contacto</a>
+      </nav>
+    </header>
+    <section class="banner html">
+      <h1>Practica de HTML Y CSS</h1>
+    </section>
+    <main>
+      <section class="contenedor contacto">
+        <h2>Inicio</h2>
+        <div class="form-card">
+          <form>
+            <div class="row-two">
+              <label>
+                Nombre y apellido
+                <input type="text" placeholder="Ej: Juan Perez" />
+              </label>
+              <label>
+                Email
+                <input type="email" placeholder="Ej: juanperez@mail.com" />
+              </label>
+            </div>
+            <label class="full-width">
+              Consulta
+              <textarea rows="6" placeholder="agregue su consulta de hasta 300 caracteres"></textarea>
+            </label>
+            <div class="form-group">
+              <label><input type="radio" name="color" /> Rojo</label>
+              <label><input type="radio" name="color" /> Verde</label>
+              <label><input type="radio" name="color" /> Azul</label>
+            </div>
+            <div class="form-group checkbox-row">
+              <label><input type="checkbox" /> Rojo</label>
+              <label><input type="checkbox" /> Verde</label>
+              <label><input type="checkbox" /> Azul</label>
+            </div>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+        <div class="nav-buttons">
+          <a href="./pages/elementos.html" class="next">Siguiente →</a>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; Todos los derechos reservados | Creado por los estudiantes Lourdes Rodríguez y Leandro Nuñez</p>
+    </footer>
+  </body>
+</html>
