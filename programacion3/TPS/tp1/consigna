@@ -1,0 +1,28 @@
+/*
+A-albarrazin,amado,andrada 10 8 2
+B-vagenas,bascari,bravo 9 3 7
+C-calderom,carrizo,chazarreta 4 6 6
+D- diarte,diaz,diez 8 9 10
+
+NOTAS
+10 8 2
+9 3 7
+4 6 6
+8 9 10
+
+
+INASISTENCIAS
+10 9 8
+7 6 5 
+4 3 2
+1 9 10
+
+Agregar apellido avellaneda con nota 7 y 2 inasistencias 
+Agregar apellido,Briseño con 9 de nota y 9 inasistencias
+Agregar tambien a Cordoba con 6 de nota y 3 inasistencias
+Agregar a Geronimo con 2 y 9 inasistencias
+Se quiere saber el promedio de nota de todos los alumnos
+Saber si cada alumno aprueba con 7 o mas y queda libre si
+tiene mas de 6 inasistencias
+Ingresar los datos de cada alumno por PROMPT
+*/

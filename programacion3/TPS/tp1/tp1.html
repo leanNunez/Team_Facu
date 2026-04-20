@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP1 - Alumnos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 24px;
+            line-height: 1.4;
+            background-color: #f4f6f8;
+        }
+
+        h1, h2 {
+            margin-bottom: 8px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #d9dee5;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+
+        .fila {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            min-width: 180px;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #b8c2cc;
+            border-radius: 6px;
+        }
+
+        button {
+            padding: 10px 14px;
+            border: none;
+            border-radius: 6px;
+            background-color: #0b5ed7;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #094db3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            background-color: #fff;
+        }
+
+        th,
+        td {
+            border: 1px solid #d9dee5;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eef2f7;
+        }
+
+        #resumen {
+            font-weight: bold;
+        }
+
+        #mensaje {
+            min-height: 22px;
+            color: #0a5a2a;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gestión de Alumnos</h1>
+
+    <section class="card">
+        <h2>Ingreso manual</h2>
+        <form id="formAlumno">
+            <div class="fila">
+                <div class="campo">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" placeholder="Ej: Avellaneda" required>
+                </div>
+                <div class="campo">
+                    <label for="nota">Nota (0 a 10)</label>
+                    <input type="number" id="nota" min="0" max="10" step="1" required>
+                </div>
+                <div class="campo">
+                    <label for="asistencia">Inasistencias</label>
+                    <input type="number" id="asistencia" min="0" step="1" required>
+                </div>
+            </div>
+            <button type="submit">Agregar alumno</button>
+        </form>
+        <p id="mensaje"></p>
+    </section>
+
+    <section class="card">
+        <h2>Listado</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Apellido</th>
+                    <th>Nota</th>
+                    <th>Inasistencias</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="tablaAlumnos"></tbody>
+        </table>
+        <p id="resumen">Promedio general: 0.00</p>
+    </section>
+
+    <script src="tp1.js"></script>
+</body>
+</html>
