@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mi Tienda - Inicio</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="site" id="site">
+    <!-- Header principal -->
+    <header class="site-header" role="banner">
+      <div class="brand">
+        <a href="index.html" aria-label="Inicio">
+          <img src="../imagenes/Logo.png" alt="Logotipo" class="logo">
+        </a>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle" aria-controls="mainNav" aria-expanded="false">☰</button>
+
+      <nav id="mainNav" class="main-nav" role="navigation" aria-label="Menú principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li class="nav-cart">
+            <a href="carrito.html" class="cart-link" aria-label="Carrito de compras">
+              Carrito
+              <span class="cart-count" aria-live="polite" hidden>0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main" role="main">
+      <!-- Hero -->
+      <section class="hero">
+        <h1>Bienvenid@ a Mi Tienda</h1>
+        <p>Ropa y accesorios para todos los estilos. Calidad y atención personalizada.</p>
+        <a class="cta" href="productos.html">Ver productos</a>
+      </section>
+
+      <!-- Categorias destacadas -->
+      <section class="cards">
+        <article class="card">
+          <img src="../imagenes/mujer.jpg" alt="Colección mujer" loading="lazy">
+          <h3>Mujer</h3>
+          <p>Encuentra las últimas tendencias para mujer.</p>
+        </article>
+
+        <article class="card">
+          <img src="../imagenes/hombre.jpg" alt="Colección hombre" loading="lazy">
+          <h3>Hombre</h3>
+          <p>Estilos cómodos y elegantes para hombre.</p>
+        </article>
+
+        <article class="card">
+            <img src="../imagenes/ninos.jpg" alt="Colección niños" loading="lazy">
+          <h3>Niños</h3>
+          <p>Ropa resistente y divertida para los más pequeños.</p>
+        </article>
+      </section>
+
+      <!-- Producto destacado -->
+      <section class="content">
+        <h2>Producto destacado</h2>
+        <div class="product-grid">
+          <article class="product" data-category="destacado">
+            <img src="../imagenes/vestido.jpg" alt="Vestido floral">
+            <h3>Vestido Floral</h3>
+            <p class="product-price" data-price="18500">Precio: $ 18.500</p>
+            <button class="add-to-cart" type="button">Agregar al carrito</button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Mensaje destacado -->
+      <section class="highlight">
+        <h2>Ropa para todos los estilos</h2>
+        <p>Visítanos y descubre nuestras promociones mensuales.</p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="footer-columns">
+        <div>
+          <h3>Quiénes somos</h3>
+          <p>Somos una tienda local con historia y compromiso por la calidad.</p>
+        </div>
+
+        <div>
+          <h3>Contacto rápido</h3>
+          <p>Tel: 3815888075<br>Dirección: Santa Rosa de Leales</p>
+        </div>
+
+        <div class="social">
+          <h3>Síguenos</h3>
+          <ul class="social-list">
+            <li>
+              <a href="https://www.facebook.com/share/1CrX6WBYhT/" aria-label="Facebook" class="social-link">
+                <!-- Facebook SVG -->
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="#1877F2" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-2.9h2.2V9.3c0-2.2 1.3-3.4 3.3-3.4.95 0 1.9.17 1.9.17v2.1h-1.08c-1.06 0-1.39.66-1.39 1.34v1.6h2.36l-.38 2.9h-1.98v7A10 10 0 0 0 22 12z"/>
+                </svg>
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/dalys.indumentaria01?igsh=MW1xeW14N3JiM2tpYw==" aria-label="Instagram" class="social-link">
+                <!-- Instagram SVG -->
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <linearGradient id="ig" x1="0" x2="1">
+                    <stop offset="0" stop-color="#f58529"/>
+                    <stop offset="0.5" stop-color="#dd2a7b"/>
+                    <stop offset="1" stop-color="#8134af"/>
+                  </linearGradient>
+                  <path fill="url(#ig)" d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5zM18 6.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                </svg>
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="Twitter" class="social-link">
+                <!-- Twitter SVG -->
+                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path fill="#1DA1F2" d="M22 5.92c-.63.28-1.3.46-2 .54a3.48 3.48 0 0 0 1.53-1.92 7.02 7.02 0 0 1-2.21.85 3.5 3.5 0 0 0-6 3.19A9.94 9.94 0 0 1 3.2 4.91a3.5 3.5 0 0 0 1.08 4.67 3.48 3.48 0 0 1-1.59-.44v.04a3.5 3.5 0 0 0 2.81 3.43 3.5 3.5 0 0 1-1.58.06 3.5 3.5 0 0 0 3.26 2.43A7.02 7.02 0 0 1 2 19.54 9.88 9.88 0 0 0 7.29 21c6.55 0 10.14-5.42 10.14-10.13v-.46A7.2 7.2 0 0 0 22 5.92z"/>
+                </svg>
+                Twitter
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <small>© Mi Tienda. Todos los derechos reservados.</small>
+    </footer>
+  </div>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

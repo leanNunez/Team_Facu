@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mi Tienda - Carrito</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="site">
+      <!-- Header principal -->
+      <header class="site-header" role="banner">
+        <div class="brand">
+          <a href="index.html" aria-label="Inicio">
+            <img src="../imagenes/Logo.png" alt="Logotipo" class="logo" />
+          </a>
+        </div>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle7"
+          aria-controls="mainNav7"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+
+        <nav
+          id="mainNav7"
+          class="main-nav"
+          role="navigation"
+          aria-label="Menu principal"
+        >
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="novedades.html">Novedades</a></li>
+            <li class="nav-cart">
+              <a
+                href="carrito.html"
+                class="cart-link"
+                aria-label="Carrito de compras"
+              >
+                Carrito
+                <span class="cart-count" aria-live="polite" hidden>0</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <!-- Contenido principal -->
+      <main class="main">
+        <section class="content">
+          <h1>Carrito</h1>
+          <!-- Panel del carrito -->
+          <section id="carrito" class="cart-panel" aria-live="polite">
+            <p id="cartEmpty" class="cart-empty">
+              Todavia no agregaste productos.
+            </p>
+            <ul
+              id="cartList"
+              class="cart-list"
+              aria-label="Lista de productos"
+            ></ul>
+            <div class="cart-total">Total: <span id="cartTotal">$ 0</span></div>
+          </section>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-columns">
+          <div>
+            <h3>Ayuda</h3>
+            <p>Preguntas frecuentes y atencion al cliente.</p>
+          </div>
+          <div class="social">
+            <h3>Redes</h3>
+            <ul class="social-list">
+              <li>
+                <a
+                  href="https://www.facebook.com/share/1CrX6WBYhT/"
+                  aria-label="Facebook"
+                  >Facebook
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path
+                      fill="#1877F2"
+                      d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-2.9h2.2V9.3c0-2.2 1.3-3.4 3.3-3.4.95 0 1.9.17 1.9.17v2.1h-1.08c-1.06 0-1.39.66-1.39 1.34v1.6h2.36l-.38 2.9h-1.98v7A10 10 0 0 0 22 12z"
+                    />
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3>Horario</h3>
+            <p>Lun-Sab 8:30-13 y 17:30-21<br />Dom 9-12:30</p>
+          </div>
+        </div>
+        <small>(c) Mi Tienda.</small>
+      </footer>
+    </div>
+    <script src="../js/script.js"></script>
+  </body>
+</html>

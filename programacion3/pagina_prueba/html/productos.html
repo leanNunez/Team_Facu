@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mi Tienda - Productos y servicios</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="site">
+    <!-- Header principal -->
+    <header class="site-header" role="banner">
+      <div class="brand"><a href="index.html"><img src="../imagenes/Logo.png" alt="Logotipo" class="logo"></a></div>
+      <button class="menu-toggle" id="menuToggle3" aria-controls="mainNav3" aria-expanded="false">☰</button>
+      <nav id="mainNav3" class="main-nav" role="navigation" aria-label="Menú principal">
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li class="nav-cart">
+            <a href="carrito.html" class="cart-link" aria-label="Carrito de compras">
+              Carrito
+              <span class="cart-count" aria-live="polite" hidden>0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main with-aside">
+      <!-- Menu de categorias -->
+      <aside class="secondary-menu" aria-label="Menú secundario">
+        <h2>Categorías</h2>
+        <ul>
+          <li><a href="#mujer">Mujer</a></li>
+          <li><a href="#hombre">Hombre</a></li>
+          <li><a href="#ninos">Niños</a></li>
+          <li><a href="#accesorios">Accesorios</a></li>
+        </ul>
+      </aside>
+
+      <!-- Listado de productos -->
+      <section class="content products">
+        <h1 id="productos">Productos y servicios</h1>
+
+        <!-- Categoria mujer -->
+        <section id="mujer" class="category">
+          <h2>Mujer</h2>
+          <div class="product-grid">
+            <article class="product" data-category="mujer">
+              <img src="../imagenes/vestido.jpg" alt="Vestido floral">
+              <h3>Vestido Floral</h3>
+              <p class="product-price" data-price="18500">Precio: $ 18.500</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Vestido de tela liviana, estampado floral, disponible en talles S, M, L. Ideal para el verano.</p>
+              </div>
+            </article>
+
+            <article class="product" data-category="mujer">
+              <img src="../imagenes/blusa.jpg" alt="Blusa elegante">
+              <h3>Blusa Elegante</h3>
+              <p class="product-price" data-price="14200">Precio: $ 14.200</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Blusa en satin, color vibrante, perfecta para oficina o eventos formales.</p>
+              </div>
+            </article>
+
+            <article class="product" data-category="mujer">
+              <img src="../imagenes/jean.jpg" alt="Jeans stretch">
+              <h3>Short Jean</h3>
+              <p class="product-price" data-price="16500">Precio: $ 16.500</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Short de jean con elasticidad, cintura media y lavado claro. Cómodo y resistente.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Categoria hombre -->
+        <section id="hombre" class="category">
+          <h2>Hombre</h2>
+          <div class="product-grid">
+            <article class="product" data-category="hombre">
+              <img src="../imagenes/camisa.jpg" alt="Camisa casual">
+              <h3>Camisa Casual</h3>
+              <p class="product-price" data-price="15800">Precio: $ 15.800</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Camisa de lino, patrón holgado, perfecta para uso diario y para playa.</p>
+              </div>
+            </article>
+
+            <article class="product" data-category="hombre">
+              <img src="../imagenes/pantalon-hombre.jpg" alt="Jeans clásico">
+              <h3>Jeans Clásico</h3>
+              <p class="product-price" data-price="19500">Precio: $ 19.500</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Jeans de corte recto, variedad de talles, disponible en varios lavados.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Categoria ninos -->
+        <section id="ninos" class="category">
+          <h2>Niños</h2>
+          <div class="product-grid">
+            <article class="product" data-category="ninos">
+              <img src="../imagenes/remera-nino.jpg" alt="Remera divertida">
+              <h3>Remera Divertida</h3>
+              <p class="product-price" data-price="9200">Precio: $ 9.200</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Remera con estampados alegres, tela suave y resistente para el juego diario.</p>
+              </div>
+            </article>
+
+            <article class="product" data-category="ninos">
+              <img src="../imagenes/pantalon-nino.jpg" alt="Pantalón cómodo">
+              <h3>Pantalón Cómodo</h3>
+              <p class="product-price" data-price="12800">Precio: $ 12.800</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Pantalón elástico con cintura ajustable, ideal para la escuela.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Categoria accesorios -->
+        <section id="accesorios" class="category">
+          <h2>Accesorios</h2>
+          <div class="product-grid">
+            <article class="product" data-category="accesorios">
+              <img src="../imagenes/bolso-mujer.jpg" alt="Bolso urbano">
+              <h3>Bolso Urbano</h3>
+              <p class="product-price" data-price="21000">Precio: $ 21.000</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Bolso de lona y cuero sintético, compartimentos interiores y cierre reforzado.</p>
+              </div>
+            </article>
+
+            <article class="product" data-category="accesorios">
+              <img src="../imagenes/cinto-hombre.jpg" alt="Cinturón clásico">
+              <h3>Cinturón Clásico</h3>
+              <p class="product-price" data-price="8400">Precio: $ 8.400</p>
+              <button class="add-to-cart" type="button">Agregar al carrito</button>
+              <button class="more-info" aria-expanded="false">Más info</button>
+              <div class="product-desc" hidden>
+                <p>Cinturón de piel sintética, hebilla metálica y diseño atemporal.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-columns">
+        <div><h3>Ayuda</h3><p>Preguntas frecuentes y atención al cliente.</p></div>
+        <div class="social"><h3>Redes</h3>
+          <ul class="social-list">
+            <li><a href="https://www.facebook.com/share/1CrX6WBYhT/" aria-label="Facebook">Facebook
+              <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1877F2" d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2v-2.9h2.2V9.3c0-2.2 1.3-3.4 3.3-3.4.95 0 1.9.17 1.9.17v2.1h-1.08c-1.06 0-1.39.66-1.39 1.34v1.6h2.36l-.38 2.9h-1.98v7A10 10 0 0 0 22 12z"/></svg>
+            </a></li>
+          </ul>
+        </div>
+        <div><h3>Horario</h3><p>Lun-Sab 8:30-13 y 17:30-21<br>Dom 9-12:30</p></div>
+      </div>
+      <small>© Mi Tienda.</small>
+    </footer>
+  </div>
+  <script src="../js/script.js"></script>
+</body>
+</html>
