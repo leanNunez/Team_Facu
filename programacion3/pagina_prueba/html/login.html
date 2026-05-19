@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Mi Tienda - Login</title>
+        <link rel="stylesheet" href="../css/base.css" />
+        <link rel="stylesheet" href="../css/login.css" />
+    </head>
+    <body>
+        <div class="site">
+            <!-- Header principal -->
+            <header class="site-header" role="banner">
+                <div class="brand">
+                    <a href="index.html" aria-label="Inicio">
+                        <img src="../imagenes/Logo.png" alt="Logotipo" class="logo" />
+                    </a>
+                </div>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggleLogin"
+                    aria-controls="mainNavLogin"
+                    aria-expanded="false"
+                    >
+                    ☰
+                </button>
+
+                <nav
+                    id="mainNavLogin"
+                    class="main-nav"
+                    role="navigation"
+                    aria-label="Menu principal"
+                >
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="productos.html">Productos</a></li>
+                        <li><a href="carrito.html">Carrito</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Contenido principal -->
+            <main class="main">
+                <section class="auth-shell">
+                    <section class="content auth-card">
+                        <h1>Iniciar sesión</h1>
+                        <p>Usá un nombre simple para activar tu sesión y ver el carrito.</p>
+
+                        <form id="formularioLogin" class="auth-form">
+                            <div class="auth-field">
+                                <label for="nombreUsuario">Nombre de usuario</label>
+                                <input
+                                    id="nombreUsuario"
+                                    name="nombreUsuario"
+                                    type="text"
+                                    autocomplete="username"
+                                    placeholder="Ej: Martina"
+                                    required
+                            />
+                            </div>
+
+                            <div class="auth-field">
+                                <label for="claveUsuario">Contraseña</label>
+                                <input
+                                    id="claveUsuario"
+                                    name="claveUsuario"
+                                    type="password"
+                                    autocomplete="current-password"
+                                    placeholder="Cualquier contraseña"
+                                    required
+                                />
+                            </div>
+
+                            <button class="auth-submit" type="submit">Entrar</button>
+                        </form>
+
+                        <p id="loginMessage" class="auth-message" hidden></p>
+                    </section>
+
+                    <aside class="content auth-card">
+                        <h2>Qué hace este login</h2>
+                        <p>
+                        Guarda una sesión simple en el navegador y habilita el carrito
+                        solo cuando hay un usuario activo.
+                        </p>
+                        <p>Si cerrás sesión, el acceso al carrito vuelve a bloquearse.</p>
+                        <a class="cta" href="carrito.html">Ir al carrito</a>
+                    </aside>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="site-footer">
+                <div class="footer-columns">
+                    <div>
+                        <h3>Ayuda</h3>
+                        <p>Preguntas frecuentes y atencion al cliente.</p>
+                    </div>
+                    <div class="social">
+                        <h3>Redes</h3>
+                        <ul class="social-list">
+                            <li>
+                                <a
+                                href="https://www.facebook.com/share/1CrX6WBYhT/"
+                                aria-label="Facebook"
+                                >Facebook</a
+                            >
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Horario</h3>
+                        <p>Lun-Sab 8:30-13 y 17:30-21<br />Dom 9-12:30</p>
+                    </div>
+                </div>
+                <small>(c) Mi Tienda.</small>
+            </footer>
+        </div>
+        <script src="../js/sesion.js"></script>
+        <script src="../js/base.js"></script>
+        <script src="../js/login.js"></script>
+    </body>
+</html>

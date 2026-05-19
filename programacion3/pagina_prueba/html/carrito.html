@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Mi Tienda - Carrito</title>
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/carrito.css" />
   </head>
   <body>
     <div class="site">
@@ -53,6 +54,11 @@
       <main class="main">
         <section class="content">
           <h1>Carrito</h1>
+          <section id="cartAccess" class="auth-panel" aria-live="polite" hidden>
+            <h2>Necesitas iniciar sesión</h2>
+            <p>El carrito solo se muestra cuando hay una sesión activa.</p>
+            <a class="cta" href="login.html">Ir al login</a>
+          </section>
           <!-- Panel del carrito -->
           <section id="carrito" class="cart-panel" aria-live="polite">
             <p id="cartEmpty" class="cart-empty">
@@ -106,6 +112,8 @@
         <small>(c) Mi Tienda.</small>
       </footer>
     </div>
-    <script src="../js/script.js"></script>
+    <script src="../js/sesion.js"></script>
+    <script src="../js/base.js"></script>
+    <script src="../js/carrito.js"></script>
   </body>
 </html>
